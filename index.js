@@ -6,6 +6,7 @@ import "dotenv/config"
 import path from "path"
 import { fileURLToPath } from "url";
 import listaTareasRouter from "./src/routes/tareas.routes.js"
+import "./src/database/database.js"
 
 
 // Configuramos un puerto
