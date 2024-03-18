@@ -33,9 +33,23 @@ export const crearTareas = async (req,res) => {
 
 export const editarTarea = async (req,res) => {
     try {
-        
+        const id = req.params.id
+        const taskFind = await Task.findById(id)
+        if(!taskFind){
+            return res.status(404).json({
+                mensaje: "No se ha encontradoo la tarea"
+            })
+        }
+
+        await Task.findByIdAndUpdate(id, req.body)
+        res.status(200).json({
+            mensaje: "Se edito el producto con exito"
+        })
     } catch (error) {
-        
+        console.error("Ha habido un error", error)
+        res.status(404).json({
+            mensaje: "Error al intentar editar el producto"
+        })
     }
 }
 
