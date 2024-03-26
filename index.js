@@ -8,9 +8,6 @@ import { fileURLToPath } from "url";
 import listaTareasRouter from "./src/routes/tareas.routes.js"
 import "./src/database/database.js"
 
-
-// Configuramos un puerto
-
 const app = express()
 
 app.set("port", process.env.port || 4000)
@@ -19,19 +16,14 @@ app.listen(app.get("port"), () =>{
     console.log("Esta activado el puerto", app.get("port"))
 })
 
-// Configuramos los middlewares
 
-// Para aceptar conexiones
 app.use(cors())
 
-// para recibir notificaciones
 
 app.use(morgan("dev"))
 
-// para trabajar con formate json
 app.use(express.json())
 
-// para usar los datos del body
 
 app.use(express.urlencoded({ extended: true }))
 
